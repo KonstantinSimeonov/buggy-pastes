@@ -1,0 +1,10 @@
+{
+   "type": "mysql",
+   "host": "localhost",
+   "port": 3306,
+   "username": "kon",
+   "password": "kiro",
+   "database": "pastes",
+   "synchronize": true,
+   "logging": false
+}
