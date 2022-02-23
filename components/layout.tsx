@@ -10,27 +10,27 @@ export const Layout: React.FC = ({ children }) => {
     <div className={styles.shell}>
       <nav className="space-x-4 items-center shadow-lg flex">
         <AppLink href="/pastes">
-          <a>Pastes</a>
+          Pastes
         </AppLink>
         {!user ? (
           <>
             <AppLink href="/pastes/create">
-              <a>Create a paste</a>
+              Create a paste
             </AppLink>
             <AppLink href="/users/register">
-              <a>Register</a>
+              Register
             </AppLink>
             <AppLink href="/users/login">
-              <a>Login</a>
+              Login
             </AppLink>
           </>
         ) : (
           <>
             <AppLink href={`/api/users/${user.username}`}>
-              <a>{user.username}</a>
+              {user.username}
             </AppLink>
             <AppLink href="/api/logout">
-              <a>Logout</a>
+              Logout
             </AppLink>
           </>
         )}
