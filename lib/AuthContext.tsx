@@ -9,7 +9,10 @@ export const AuthContext = React.createContext({
 })
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const { data: user } = useSWR<Session>('/api/me', (url: string) => fetch(url).then(res => res.status < 400 ? res.json() : Promise.reject(res)))
+  const { data: user } = useSWR<Session>(
+    '/api/me',
+    (url: string) => fetch(url).then(res => res.status < 400 ? res.json() : undefined)
+  )
   return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
 }
 
