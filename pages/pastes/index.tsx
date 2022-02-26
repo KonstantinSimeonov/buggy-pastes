@@ -2,6 +2,7 @@ import * as to from 'typeorm';
 import { Paste } from '../../entities/Paste';
 import { initDb } from '../../initializers/database';
 import Link from 'next/link'
+import Head from 'next/head'
 
 export const getServerSideProps = async context => {
   await initDb()
@@ -16,6 +17,9 @@ export const getServerSideProps = async context => {
 
 const PasteList = ({ pastes }: ReturnType<typeof getServerSideProps> extends Promise<{ props: infer Props }> ? Props : unknown) => (
   <>
+    <Head>
+      <title>Horsebin - Recent Pastes</title>
+    </Head>
     <h1 className="text-3xl font-bold underline">
       Here do be pastes mon
     </h1>

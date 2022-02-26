@@ -26,7 +26,7 @@ export const Layout: React.FC = ({ children }) => {
             <AppLink href="/pastes/create">
               Create a paste
             </AppLink>
-            <AppLink href={`/api/users/${user.username}`}>
+            <AppLink href={`/pastes/by-user/${user.username}`}>
               {user.username}
             </AppLink>
             <AppLink href="/api/logout">

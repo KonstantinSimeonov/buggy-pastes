@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import * as React from 'react'
 
@@ -25,6 +26,9 @@ const CreatePaste: NextPage = () => {
   }
   return (
     <>
+      <Head>
+        <title>Horsebin - Create paste</title>
+      </Head>
       <h2>New paste</h2>
       <input placeholder="title" name="title" value={state.title} onChange={handleChange} />
       <input placeholder="lang" name="language" value={state.language} onChange={handleChange} />
