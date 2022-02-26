@@ -12,7 +12,13 @@ export class Paste {
     this.id = randomUUID()
   }
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 30 })
+  public title!: string | null
+
+  @Column({ type: 'varchar', length: 20 })
+  public language!: string | null
+
+  @Column({ type: 'text' })
   public content!: string
 
   @CreateDateColumn()

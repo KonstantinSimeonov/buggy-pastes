@@ -16,7 +16,7 @@ const handler = withAuth(async function handler(
 ) {
   await initDb()
   const p = new Paste()
-  p.content = req.body.content
+  Object.assign(p, req.body)
   p.user = await getUser(req.cookies.accessToken)
   await getRepository(Paste).save(p)
   res.status(201).json({ id: p.id })

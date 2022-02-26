@@ -6,7 +6,7 @@ import Link from 'next/link'
 export const getServerSideProps = async context => {
   await initDb()
   const repo = to.getRepository(Paste)
-  const pastes = (await repo.find()).map(p => ({ ...p, createdAt: p.createdAt.toString() }))
+  const pastes = (await repo.find({ take: 10, order: { createdAt: 'DESC' } })).map(p => ({ ...p, createdAt: p.createdAt.toString() }))
   return {
     props: {
       pastes
@@ -20,7 +20,15 @@ const PasteList = ({ pastes }: ReturnType<typeof getServerSideProps> extends Pro
       Here do be pastes mon
     </h1>
     <ul>{
-      pastes.map(p => <li key={p.id}>{p.content} | created at: {p.createdAt}</li>)
+      pastes.map(
+        p => (
+          <li key={p.id}>
+            <Link href={`/pastes/${p.id}`}>
+              <a>{p.content.slice(0, 20)}... {p.language || ''}</a>
+            </Link>
+          </li>
+        )
+      )
     }</ul>
     <Link href="/">
       <a>Home</a>

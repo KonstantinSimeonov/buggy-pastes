@@ -8,15 +8,12 @@ export const Layout: React.FC = ({ children }) => {
   const { user } = useAuth();
   return (
     <div className={styles.shell}>
-      <nav className="space-x-4 items-center shadow-lg flex">
+      <nav className="flex items-center shadow-lg space-x-4">
         <AppLink href="/pastes">
           Pastes
         </AppLink>
         {!user ? (
           <>
-            <AppLink href="/pastes/create">
-              Create a paste
-            </AppLink>
             <AppLink href="/users/register">
               Register
             </AppLink>
@@ -26,6 +23,9 @@ export const Layout: React.FC = ({ children }) => {
           </>
         ) : (
           <>
+            <AppLink href="/pastes/create">
+              Create a paste
+            </AppLink>
             <AppLink href={`/api/users/${user.username}`}>
               {user.username}
             </AppLink>
