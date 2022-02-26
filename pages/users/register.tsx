@@ -28,7 +28,7 @@ export default () => {
       <Head>
         <title>Horsebin - Register</title>
       </Head>
-      <form className="flex flex-col max-w-md min-w-md" onSubmit={handleSubmit(submit)}>
+      <form className="flex flex-col self-center" onSubmit={handleSubmit(submit)}>
         <fieldset className="flex flex-col mb-2">
           <legend className="mb-2 text-lg font-bold">New Profile</legend>
           <label className="mb-2">
