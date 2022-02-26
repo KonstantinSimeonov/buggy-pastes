@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import {useRouter} from 'next/router'
 import * as React from 'react'
 
 const CreatePaste: NextPage = () => {
@@ -9,6 +10,8 @@ const CreatePaste: NextPage = () => {
     title: undefined as string | undefined,
     language: undefined as string | undefined
   })
+
+  const r = useRouter()
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setState(
@@ -22,8 +25,13 @@ const CreatePaste: NextPage = () => {
         'Content-Type': 'application/json',
         Accept: 'application/json'
       })
-    })
+    }).then(res => res.status < 300 ? res.json() : Promise.reject(res.json()))
+      .then(data => r.push(`/pastes/${data.id}`)
+
+    )
   }
+
+
   return (
     <>
       <Head>

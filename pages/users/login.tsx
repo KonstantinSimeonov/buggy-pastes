@@ -11,7 +11,7 @@ export default () => {
     method: 'POST',
     body: JSON.stringify({ password: pass, username: name })
   }).then(
-    res => res.status < 300 ? r.push('/') : null
+    res => res.status < 300 ? r.push(`/pastes/by-user/${name}`) : null
   )
 
   return (

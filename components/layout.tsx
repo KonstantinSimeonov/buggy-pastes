@@ -8,7 +8,7 @@ export const Layout: React.FC = ({ children }) => {
   const { user } = useAuth();
   return (
     <div className={styles.shell}>
-      <nav className="flex items-center shadow-lg space-x-4">
+      <nav className="flex items-center shadow-lg">
         <AppLink href="/pastes">
           Pastes
         </AppLink>
@@ -35,7 +35,7 @@ export const Layout: React.FC = ({ children }) => {
           </>
         )}
       </nav>
-      <main>{children}</main>
+      <main className="flex flex-col">{children}</main>
       <footer>typ app s paste-ove</footer>
     </div>
   );

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {useRouter} from 'next/router'
 import * as React from 'react'
 import { useForm } from 'react-hook-form'
+import { Input } from '../../components/Input'
 
 import { Button } from '../../components/Button'
 
@@ -23,27 +24,27 @@ export default () => {
   }).then(res => res.status < 300 ? r.push('/users/login') : null)
 
   return (
-    <>
+    <div className="flex place-content-center grow">
       <Head>
         <title>Horsebin - Register</title>
       </Head>
-      <form className="flex flex-col w-20 h-48 min-h-fit" onSubmit={handleSubmit(submit)}>
+      <form className="flex flex-col max-w-md min-w-md" onSubmit={handleSubmit(submit)}>
         <fieldset className="flex flex-col mb-2">
           <legend className="mb-2 text-lg font-bold">New Profile</legend>
           <label className="mb-2">
             Username
-            <input {...register('username', { required: true, maxLength: 20 })} />
+            <Input {...register('username', { required: true, maxLength: 20 })} />
             {errors.username?.type === `required` ? <ValidationError msg="Username is required" /> : null}
             {errors.username?.type === `maxLength` ? <ValidationError msg="Username should be below 20 chars" /> : null}
           </label>
           <label className="mb-2">
             Password
-            <input type="password" {...register('password', { required: true, minLength: 8, maxLength: 30 })} />
+            <Input type="password" {...register('password', { required: true, minLength: 8, maxLength: 30 })} />
             {errors.password?.type === `minLength` ? <ValidationError msg="Password must be at least 8 chars" /> : null}
           </label>
         </fieldset>
         <Button disabled={Boolean(errors.password || errors.username)}>Register</Button>
       </form>
-    </>
+    </div>
   )
 }
