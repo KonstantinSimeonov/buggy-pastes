@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, ManyToOne } from 'typeorm'
+import { JoinColumn, Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, ManyToOne } from 'typeorm'
 import { randomUUID } from 'crypto'
 import { User } from './User'
 
@@ -24,6 +24,10 @@ export class Paste {
   @CreateDateColumn()
   public createdAt!: Date
 
+  @Column({ type: 'uuid' })
+  public userId!: string | null
+
   @ManyToOne(() => User, user => user.pastes, { nullable: true })
+  @JoinColumn({ name: 'userId' })
   user!: User | null;
 }
