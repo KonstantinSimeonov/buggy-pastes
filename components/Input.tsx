@@ -1,5 +1,8 @@
-export const Input: React.FC<React.HTMLProps<HTMLInputElement>> = props => (
+import * as React from 'react'
+
+export const Input = React.forwardRef<HTMLInputElement>((props: React.HTMLProps<HTMLInputElement>, ref) => (
   <input
+    ref={ref}
     {...props}
     className={`form-control
         block
@@ -17,4 +20,4 @@ export const Input: React.FC<React.HTMLProps<HTMLInputElement>> = props => (
         m-0
         focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none`}
   />
-)
+))
